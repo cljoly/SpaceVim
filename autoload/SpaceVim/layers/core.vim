@@ -299,6 +299,26 @@ function! SpaceVim#layers#core#config() abort
   nnoremap <silent> <Plug>CommentOperator :set opfunc=<SID>commentOperator<Cr>g@
   let g:_spacevim_mappings_space[';'] = ['call feedkeys("\<Plug>CommentOperator")', 'comment-operator']
   nmap <silent> [SPC]; <Plug>CommentOperator
+
+  " Adapt clever-f to bepo layout
+  if g:spacevim_enable_bepo_layout
+    let g:clever_f_not_overwrites_standard_mappings = 1
+    nmap f <Plug>(clever-f-f)
+    xmap f <Plug>(clever-f-f)
+    omap f <Plug>(clever-f-f)
+    nmap F <Plug>(clever-f-F)
+    xmap F <Plug>(clever-f-F)
+    omap F <Plug>(clever-f-F)
+    " 't' in bepo is playing the role the qwerty 'j', 'h' is used as the
+    " qwerty 't'
+    nmap h <Plug>(clever-f-t)
+    xmap h <Plug>(clever-f-t)
+    omap h <Plug>(clever-f-t)
+    nmap H <Plug>(clever-f-T)
+    xmap H <Plug>(clever-f-T)
+    omap H <Plug>(clever-f-T)
+  endif
+
 endfunction
 
 function! s:gotodef() abort
